@@ -1,0 +1,445 @@
+/* Guitar-Space — Estilos base (DIS-01 a DIS-05, DIS-15, DIS-32, DIS-33) */
+
+/* DIS-01, DIS-02, DIS-03, DIS-04: paleta, tipografía y espaciado */
+:root {
+  /* Colores */
+  --color-fondo: #141414;
+  --color-tarjeta: #222222;
+  --color-hover: #3A3A3A;
+  --color-borde-pausa: #6A6A6A;
+  --color-texto: #F2F2F2;
+  --color-texto-secundario: #A0A0A0;
+  --color-verde: #22C55E;
+  --color-verde-suave: #14301C;
+  --color-amarillo: #F5B921;
+  --color-amarillo-suave: #3A2A0A;
+  --color-rojo: #EF4444;
+  --color-rojo-suave: #3A1414;
+  --color-azul: #3B82F6;
+  --color-azul-suave: #0F2A4A;
+  --color-gris: #4A4A4A;
+
+  /* Tipografía */
+  --fuente-sistema: system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+  --fuente-monoespaciada: ui-monospace, Consolas, 'Courier New', monospace;
+  --tamano-titulo: 18px;
+  --tamano-texto: 14px;
+  --tamano-texto-secundario: 12px;
+  --tamano-porcentaje: 28px;
+  --tamano-cronometro: 18px;
+  --espaciado-titulo: 0.12em;
+  --peso-titulo: 800;
+
+  /* Espaciado en múltiplos de 8 px */
+  --espacio-1: 8px;
+  --espacio-2: 16px;
+  --espacio-3: 24px;
+
+  /* Bordes */
+  --grosor-borde: 1px;
+  --radio-tarjeta: 8px;
+  --radio-boton: 6px;
+
+  /* DIS-15 */
+  --tamano-boton-icono: 32px;
+  --opacidad-deshabilitado: 0.5;
+
+  /* DIS-32: fondo musical */
+  --opacidad-dibujos: 0.08;
+  --color-brillo-superior: rgba(130, 30, 60, 0.22);
+  --color-brillo-inferior: rgba(110, 26, 52, 0.18);
+  --alcance-brillo: 55%;
+
+  /* DIS-33: estilo vidrio */
+  --opacidad-vidrio: 18%;
+  --color-vidrio: color-mix(in srgb, var(--color-tarjeta) var(--opacidad-vidrio), transparent);
+  --color-campo: color-mix(in srgb, var(--color-fondo) var(--opacidad-vidrio), transparent);
+  --color-borde-vidrio: color-mix(in srgb, var(--color-texto) 10%, transparent);
+  --desenfoque-vidrio: blur(2px);
+  --duracion-transicion: 150ms;
+
+  /* DIS-13, DIS-26: columna centrada y botón "Terminar práctica" */
+  --ancho-columna: 960px;
+  --ancho-boton-terminar: 50%;
+
+  /* DIS-09: casillas de los días, distintas del fondo */
+  --opacidad-casilla-dia: 90%;
+  --intensidad-borde-dia: 35%;
+
+  /* DIS-21: casillas del campo de duración */
+  --ancho-casilla-numero: 64px;
+
+  /* DIS-08, DIS-27: círculo de progreso */
+  --tamano-circulo: 160px;
+  --grosor-anillo: 6px;
+  --color-anillo-fondo: color-mix(in srgb, var(--color-texto) 8%, transparent);
+  --radio-brillo-anillo: 3px;
+  --intensidad-brillo-anillo: 60%;
+  --peso-porcentaje: 300;
+}
+
+/* DIS-01: solo tema oscuro. DIS-25: margen de 24 px. DIS-32: fondo vino. */
+body {
+  margin: 0;
+  padding: var(--espacio-3);
+  background-color: var(--color-fondo);
+  color: var(--color-texto);
+  font-family: var(--fuente-sistema);
+  font-size: var(--tamano-texto);
+  /* DIS-32: brillos difuminados arriba a la izquierda y abajo a la derecha, fijos */
+  background-image:
+    radial-gradient(ellipse at 0% 0%, var(--color-brillo-superior), transparent var(--alcance-brillo)),
+    radial-gradient(ellipse at 100% 100%, var(--color-brillo-inferior), transparent var(--alcance-brillo));
+  background-attachment: fixed;
+}
+
+/* DIS-32: dibujos en línea fina detrás de todo, fijos: pentagramas ondulados con notas,
+   guitarra, bajo, batería, saxofón y micrófono. Se dibujan como máscara
+   para que el color y la opacidad salgan de las variables. */
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  background-color: var(--color-texto);
+  opacity: var(--opacidad-dibujos);
+  mask-image: url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20width%3D%22520%22%20height%3D%22520%22%3E%3Cg%20fill%3D%22none%22%20stroke%3D%22%23000%22%20stroke-width%3D%221.6%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%3E%3Cg%20transform%3D%22translate%2820%2040%29%20rotate%28-6%29%22%3E%3Cpath%20d%3D%22M0%200%20Q%2025.0%20-8%2050.0%200%20T%20100.0%200%20T%20150.0%200%20T%20200%200%22/%3E%3Cpath%20d%3D%22M0%205%20Q%2025.0%20-3%2050.0%205%20T%20100.0%205%20T%20150.0%205%20T%20200%205%22/%3E%3Cpath%20d%3D%22M0%2010%20Q%2025.0%202%2050.0%2010%20T%20100.0%2010%20T%20150.0%2010%20T%20200%2010%22/%3E%3Cpath%20d%3D%22M0%2015%20Q%2025.0%207%2050.0%2015%20T%20100.0%2015%20T%20150.0%2015%20T%20200%2015%22/%3E%3Cpath%20d%3D%22M0%2020%20Q%2025.0%2012%2050.0%2020%20T%20100.0%2020%20T%20150.0%2020%20T%20200%2020%22/%3E%3Cellipse%20cx%3D%2240%22%20cy%3D%226%22%20rx%3D%223.5%22%20ry%3D%222.5%22%20fill%3D%22%23000%22%20transform%3D%22rotate%28-20%2040%206%29%22/%3E%3Cpath%20d%3D%22M43%206%20L43%20-10%22/%3E%3Cellipse%20cx%3D%2290%22%20cy%3D%222%22%20rx%3D%223.5%22%20ry%3D%222.5%22%20fill%3D%22%23000%22%20transform%3D%22rotate%28-20%2090%202%29%22/%3E%3Cpath%20d%3D%22M93%202%20L93%20-14%22/%3E%3Cellipse%20cx%3D%22140%22%20cy%3D%2212%22%20rx%3D%223.5%22%20ry%3D%222.5%22%20fill%3D%22%23000%22%20transform%3D%22rotate%28-20%20140%2012%29%22/%3E%3Cpath%20d%3D%22M143%2012%20L143%20-4%22/%3E%3C/g%3E%3Cg%20transform%3D%22translate%28330%20130%29%20rotate%2828%29%20scale%281.05%29%22%3E%0A%3Cpath%20d%3D%22M-20%2012%20C-30%20-2%20-22%20-20%20-10%20-14%20L-8%20-24%20C-5%20-18%20-2%20-16%200%20-16%20C2%20-16%205%20-18%208%20-24%20L10%20-14%20C22%20-20%2030%20-2%2020%2012%20C14%2030%20-14%2030%20-20%2012%20Z%22/%3E%0A%3Cpath%20d%3D%22M-3%20-16%20L-3%20-70%20L3%20-70%20L3%20-16%22/%3E%0A%3Cpath%20d%3D%22M-3%20-70%20L-6%20-86%20L5%20-88%20L3%20-70%22/%3E%0A%3Cpath%20d%3D%22M-9%200%20L9%200%20M-9%208%20L9%208%20M-6%2016%20L6%2016%22/%3E%0A%3Ccircle%20cx%3D%2214%22%20cy%3D%2214%22%20r%3D%222%22/%3E%3C/g%3E%3Cg%20transform%3D%22translate%28455%2080%29%20rotate%28-12%29%20scale%281.0%29%22%3E%0A%3Crect%20x%3D%22-10%22%20y%3D%22-40%22%20width%3D%2220%22%20height%3D%2228%22%20rx%3D%2210%22/%3E%0A%3Cpath%20d%3D%22M-10%20-30%20L10%20-30%20M-10%20-24%20L10%20-24%20M-10%20-18%20L10%20-18%22/%3E%0A%3Cpath%20d%3D%22M-15%20-26%20C-15%20-6%2015%20-6%2015%20-26%22/%3E%0A%3Cpath%20d%3D%22M0%20-9%20L0%2030%20M-14%2030%20L14%2030%22/%3E%3C/g%3E%3Cg%20transform%3D%22translate%28110%20215%29%20rotate%280%29%20scale%281.05%29%22%3E%0A%3Ccircle%20cx%3D%220%22%20cy%3D%2210%22%20r%3D%2220%22/%3E%3Ccircle%20cx%3D%220%22%20cy%3D%2210%22%20r%3D%226%22/%3E%0A%3Cellipse%20cx%3D%22-34%22%20cy%3D%220%22%20rx%3D%2212%22%20ry%3D%224%22/%3E%3Cpath%20d%3D%22M-46%200%20L-46%2012%20M-22%200%20L-22%2012%22/%3E%3Cellipse%20cx%3D%22-34%22%20cy%3D%2212%22%20rx%3D%2212%22%20ry%3D%224%22/%3E%0A%3Cpath%20d%3D%22M-40%2016%20L-44%2032%20M-28%2016%20L-24%2032%22/%3E%0A%3Cellipse%20cx%3D%220%22%20cy%3D%22-20%22%20rx%3D%229%22%20ry%3D%223%22/%3E%3Cpath%20d%3D%22M-9%20-20%20L-9%20-12%20M9%20-20%20L9%20-12%22/%3E%3Cellipse%20cx%3D%220%22%20cy%3D%22-12%22%20rx%3D%229%22%20ry%3D%223%22/%3E%0A%3Cellipse%20cx%3D%2236%22%20cy%3D%22-24%22%20rx%3D%2215%22%20ry%3D%223%22/%3E%3Cpath%20d%3D%22M36%20-21%20L36%2030%20M30%2030%20L42%2030%22/%3E%0A%3Cpath%20d%3D%22M-20%20-26%20L-6%20-10%20M-26%20-22%20L-12%20-6%22/%3E%3C/g%3E%3Cg%20transform%3D%22translate%28260%20250%29%20rotate%288%29%22%3E%3Cpath%20d%3D%22M0%200%20Q%2027.5%20-8%2055.0%200%20T%20110.0%200%20T%20165.0%200%20T%20220%200%22/%3E%3Cpath%20d%3D%22M0%205%20Q%2027.5%20-3%2055.0%205%20T%20110.0%205%20T%20165.0%205%20T%20220%205%22/%3E%3Cpath%20d%3D%22M0%2010%20Q%2027.5%202%2055.0%2010%20T%20110.0%2010%20T%20165.0%2010%20T%20220%2010%22/%3E%3Cpath%20d%3D%22M0%2015%20Q%2027.5%207%2055.0%2015%20T%20110.0%2015%20T%20165.0%2015%20T%20220%2015%22/%3E%3Cpath%20d%3D%22M0%2020%20Q%2027.5%2012%2055.0%2020%20T%20110.0%2020%20T%20165.0%2020%20T%20220%2020%22/%3E%3Cellipse%20cx%3D%2244%22%20cy%3D%226%22%20rx%3D%223.5%22%20ry%3D%222.5%22%20fill%3D%22%23000%22%20transform%3D%22rotate%28-20%2044%206%29%22/%3E%3Cpath%20d%3D%22M47%206%20L47%20-10%22/%3E%3Cellipse%20cx%3D%2299%22%20cy%3D%222%22%20rx%3D%223.5%22%20ry%3D%222.5%22%20fill%3D%22%23000%22%20transform%3D%22rotate%28-20%2099%202%29%22/%3E%3Cpath%20d%3D%22M102%202%20L102%20-14%22/%3E%3Cellipse%20cx%3D%22154%22%20cy%3D%2212%22%20rx%3D%223.5%22%20ry%3D%222.5%22%20fill%3D%22%23000%22%20transform%3D%22rotate%28-20%20154%2012%29%22/%3E%3Cpath%20d%3D%22M157%2012%20L157%20-4%22/%3E%3C/g%3E%3Cg%20transform%3D%22translate%28420%20380%29%20rotate%28-18%29%20scale%281.15%29%22%3E%0A%3Cpath%20d%3D%22M-18%20-46%20L-10%20-42%20C-4%20-40%200%20-36%200%20-28%20L0%2018%20C0%2034%2022%2034%2022%2018%20L22%208%22/%3E%0A%3Cpath%20d%3D%22M8%20-28%20L8%2018%20C8%2026%2016%2026%2016%2018%20L16%208%22/%3E%0A%3Cpath%20d%3D%22M14%208%20L8%20-6%20C14%20-10%2030%20-10%2036%20-6%20L26%208%20Z%22/%3E%0A%3Ccircle%20cx%3D%224%22%20cy%3D%22-20%22%20r%3D%221.8%22/%3E%3Ccircle%20cx%3D%224%22%20cy%3D%22-10%22%20r%3D%221.8%22/%3E%3Ccircle%20cx%3D%224%22%20cy%3D%220%22%20r%3D%221.8%22/%3E%3Ccircle%20cx%3D%224%22%20cy%3D%2210%22%20r%3D%221.8%22/%3E%3C/g%3E%3Cg%20transform%3D%22translate%28130%20470%29%20rotate%28-32%29%20scale%280.95%29%22%3E%0A%3Cpath%20d%3D%22M-18%2014%20C-28%200%20-22%20-18%20-10%20-14%20L-9%20-26%20C-4%20-20%204%20-20%209%20-26%20L10%20-14%20C22%20-18%2028%200%2018%2014%20C12%2030%20-12%2030%20-18%2014%20Z%22/%3E%0A%3Cpath%20d%3D%22M-3%20-18%20L-3%20-96%20L3%20-96%20L3%20-18%22/%3E%0A%3Cpath%20d%3D%22M-3%20-96%20L-5%20-114%20L5%20-114%20L3%20-96%22/%3E%0A%3Ccircle%20cx%3D%22-8%22%20cy%3D%22-102%22%20r%3D%221.6%22/%3E%3Ccircle%20cx%3D%22-8%22%20cy%3D%22-110%22%20r%3D%221.6%22/%3E%3Ccircle%20cx%3D%228%22%20cy%3D%22-102%22%20r%3D%221.6%22/%3E%3Ccircle%20cx%3D%228%22%20cy%3D%22-110%22%20r%3D%221.6%22/%3E%0A%3Cpath%20d%3D%22M-8%202%20L8%202%20M-8%2010%20L8%2010%22/%3E%3C/g%3E%3Cg%20transform%3D%22translate%28240%20470%29%20rotate%28-4%29%22%3E%3Cpath%20d%3D%22M0%200%20Q%2022.5%20-8%2045.0%200%20T%2090.0%200%20T%20135.0%200%20T%20180%200%22/%3E%3Cpath%20d%3D%22M0%205%20Q%2022.5%20-3%2045.0%205%20T%2090.0%205%20T%20135.0%205%20T%20180%205%22/%3E%3Cpath%20d%3D%22M0%2010%20Q%2022.5%202%2045.0%2010%20T%2090.0%2010%20T%20135.0%2010%20T%20180%2010%22/%3E%3Cpath%20d%3D%22M0%2015%20Q%2022.5%207%2045.0%2015%20T%2090.0%2015%20T%20135.0%2015%20T%20180%2015%22/%3E%3Cpath%20d%3D%22M0%2020%20Q%2022.5%2012%2045.0%2020%20T%2090.0%2020%20T%20135.0%2020%20T%20180%2020%22/%3E%3Cellipse%20cx%3D%2236%22%20cy%3D%226%22%20rx%3D%223.5%22%20ry%3D%222.5%22%20fill%3D%22%23000%22%20transform%3D%22rotate%28-20%2036%206%29%22/%3E%3Cpath%20d%3D%22M39%206%20L39%20-10%22/%3E%3Cellipse%20cx%3D%2281%22%20cy%3D%222%22%20rx%3D%223.5%22%20ry%3D%222.5%22%20fill%3D%22%23000%22%20transform%3D%22rotate%28-20%2081%202%29%22/%3E%3Cpath%20d%3D%22M84%202%20L84%20-14%22/%3E%3Cellipse%20cx%3D%22126%22%20cy%3D%2212%22%20rx%3D%223.5%22%20ry%3D%222.5%22%20fill%3D%22%23000%22%20transform%3D%22rotate%28-20%20126%2012%29%22/%3E%3Cpath%20d%3D%22M129%2012%20L129%20-4%22/%3E%3C/g%3E%3Cg%20transform%3D%22translate%2840%20360%29%20rotate%2818%29%20scale%280.8%29%22%3E%0A%3Crect%20x%3D%22-10%22%20y%3D%22-40%22%20width%3D%2220%22%20height%3D%2228%22%20rx%3D%2210%22/%3E%0A%3Cpath%20d%3D%22M-10%20-30%20L10%20-30%20M-10%20-24%20L10%20-24%20M-10%20-18%20L10%20-18%22/%3E%0A%3Cpath%20d%3D%22M-15%20-26%20C-15%20-6%2015%20-6%2015%20-26%22/%3E%0A%3Cpath%20d%3D%22M0%20-9%20L0%2030%20M-14%2030%20L14%2030%22/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+}
+
+/* DIS-04, DIS-33: tarjetas de vidrio */
+.tarjeta {
+  background-color: var(--color-vidrio);
+  backdrop-filter: var(--desenfoque-vidrio);
+  border: var(--grosor-borde) solid var(--color-borde-vidrio);
+  border-radius: var(--radio-tarjeta);
+  padding: var(--espacio-2);
+}
+
+.texto-secundario {
+  color: var(--color-texto-secundario);
+  font-size: var(--tamano-texto-secundario);
+}
+
+/* Botones: hover y deshabilitado. DIS-33: vidrio y transición. */
+button {
+  background-color: var(--color-vidrio);
+  backdrop-filter: var(--desenfoque-vidrio);
+  transition: background-color var(--duracion-transicion);
+  color: var(--color-texto);
+  border: var(--grosor-borde) solid var(--color-borde-vidrio);
+  border-radius: var(--radio-boton);
+  font-family: inherit;
+  font-size: var(--tamano-texto);
+  cursor: pointer;
+}
+
+button:hover:not(:disabled) {
+  background-color: var(--color-hover);
+}
+
+button:disabled {
+  opacity: var(--opacidad-deshabilitado);
+  cursor: not-allowed;
+}
+
+/* DIS-15: botones de ícono */
+.boton-icono {
+  width: var(--tamano-boton-icono);
+  height: var(--tamano-boton-icono);
+  padding: 0;
+}
+
+/* PRO-03, DIS-05: color de estado (siempre acompañado de texto o número) */
+.estado-verde {
+  --color-estado: var(--color-verde);
+  --color-estado-suave: var(--color-verde-suave);
+}
+
+.estado-amarillo {
+  --color-estado: var(--color-amarillo);
+  --color-estado-suave: var(--color-amarillo-suave);
+}
+
+.estado-rojo {
+  --color-estado: var(--color-rojo);
+  --color-estado-suave: var(--color-rojo-suave);
+}
+
+/* BOR-07, PRO-04: círculo sin datos y días futuros */
+.estado-gris {
+  --color-estado: var(--color-gris);
+  --color-estado-suave: var(--color-tarjeta);
+}
+
+/* DIS-06: encabezado */
+.encabezado {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: var(--espacio-3);
+}
+
+/* DIS-03: títulos en mayúsculas con letras espaciadas */
+.titulo {
+  margin: 0;
+  font-size: var(--tamano-titulo);
+  font-weight: var(--peso-titulo);
+  letter-spacing: var(--espaciado-titulo);
+  text-transform: uppercase;
+}
+
+.encabezado-acciones {
+  display: flex;
+  align-items: center;
+  gap: var(--espacio-1);
+}
+
+.insignia-racha {
+  background-color: var(--color-azul-suave);
+  color: var(--color-azul);
+  padding: var(--espacio-1) var(--espacio-2);
+  border-radius: var(--radio-tarjeta);
+}
+
+.columna {
+  display: flex;
+  flex-direction: column;
+  gap: var(--espacio-2);
+}
+
+/* DIS-07: tarjeta de resumen */
+.tarjeta-resumen {
+  display: flex;
+  align-items: center;
+  gap: var(--espacio-3);
+}
+
+.datos-resumen {
+  display: flex;
+  flex-direction: column;
+  gap: var(--espacio-1);
+}
+
+/* DIS-08: círculo de progreso */
+.circulo-progreso {
+  position: relative;
+  flex-shrink: 0;
+  width: var(--tamano-circulo);
+  height: var(--tamano-circulo);
+}
+
+.circulo-progreso svg {
+  width: 100%;
+  height: 100%;
+  transform: rotate(-90deg);
+}
+
+.anillo-fondo,
+.anillo-progreso {
+  fill: none;
+  stroke-width: var(--grosor-anillo);
+}
+
+.anillo-fondo {
+  stroke: var(--color-anillo-fondo);
+}
+
+/* DIS-08: arco con extremos redondeados y brillo suave de su color */
+.anillo-progreso {
+  stroke: var(--color-estado);
+  stroke-linecap: round;
+  filter: drop-shadow(0 0 var(--radio-brillo-anillo) color-mix(in srgb, var(--color-estado) var(--intensidad-brillo-anillo), transparent));
+}
+
+.porcentaje-semanal {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: var(--tamano-porcentaje);
+  font-weight: var(--peso-porcentaje);
+}
+
+/* DIS-09: fila de días */
+.fila-dias {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: var(--espacio-1);
+}
+
+.casilla-dia {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: var(--espacio-1);
+  background-color: color-mix(in srgb, var(--color-estado-suave) var(--opacidad-casilla-dia), transparent);
+  color: var(--color-estado);
+  border: var(--grosor-borde) solid color-mix(in srgb, var(--color-estado) var(--intensidad-borde-dia), transparent);
+  border-radius: var(--radio-tarjeta);
+}
+
+.casilla-hoy {
+  border-color: var(--color-texto);
+}
+
+/* DIS-10: tarjeta Hoy */
+.fila-hoy {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: var(--espacio-1);
+}
+
+.barra {
+  height: var(--espacio-1);
+  background-color: var(--color-gris);
+  border-radius: var(--radio-tarjeta);
+  overflow: hidden;
+}
+
+.barra-relleno {
+  height: 100%;
+  background-color: var(--color-estado);
+}
+
+/* DIS-11: mensaje "Aún te faltan h:mm" */
+.mensaje-faltan {
+  margin-top: var(--espacio-1);
+  padding: var(--espacio-1);
+  background-color: var(--color-amarillo-suave);
+  color: var(--color-amarillo);
+  border-radius: var(--radio-tarjeta);
+}
+
+/* DIS-12, DIS-14: tarjetas de categoría */
+.lista-categorias {
+  display: flex;
+  flex-direction: column;
+  gap: var(--espacio-2);
+}
+
+.tarjeta-categoria {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: var(--espacio-2);
+}
+
+.categoria-corriendo {
+  border-color: var(--color-azul);
+}
+
+.categoria-pausado {
+  border-color: var(--color-borde-pausa);
+}
+
+.controles-categoria {
+  display: flex;
+  align-items: center;
+  gap: var(--espacio-1);
+}
+
+.cronometro {
+  font-family: var(--fuente-monoespaciada);
+  font-size: var(--tamano-cronometro);
+}
+
+.categoria-pausado .cronometro,
+.categoria-bloqueada .cronometro {
+  color: var(--color-texto-secundario);
+}
+
+.insignia-cumplida {
+  background-color: var(--color-verde-suave);
+  color: var(--color-verde);
+  padding: var(--espacio-1) var(--espacio-2);
+  border-radius: var(--radio-tarjeta);
+}
+
+/* DIS-13: la mitad del ancho de la columna y centrado */
+.boton-terminar {
+  width: var(--ancho-boton-terminar);
+  align-self: center;
+  padding: var(--espacio-2);
+}
+
+/* DIS-20 a DIS-23, DIS-29, DIS-30: configuración */
+.boton-texto {
+  padding: var(--espacio-1) var(--espacio-2);
+}
+
+.subtitulo {
+  margin: 0;
+  font-size: var(--tamano-texto);
+}
+
+.bloque-configuracion,
+.filas-categorias {
+  display: flex;
+  flex-direction: column;
+  gap: var(--espacio-2);
+}
+
+.fila-configuracion {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  gap: var(--espacio-2);
+}
+
+.nombre-configuracion {
+  flex: 1;
+}
+
+.alineado-con-campo {
+  padding-top: var(--espacio-1);
+}
+
+.acciones-eliminar {
+  display: flex;
+  align-items: center;
+  gap: var(--espacio-1);
+}
+
+/* DIS-21: campo de duración h:mm */
+.campo-duracion {
+  display: flex;
+  align-items: center;
+  gap: var(--espacio-1);
+}
+
+input {
+  background-color: var(--color-campo);
+  color: var(--color-texto);
+  border: var(--grosor-borde) solid var(--color-borde-vidrio);
+  border-radius: var(--radio-boton);
+  padding: var(--espacio-1);
+  font-family: inherit;
+  font-size: var(--tamano-texto);
+}
+
+.casilla-numero {
+  width: var(--ancho-casilla-numero);
+}
+
+/* DIS-16: errores de validación */
+.mensaje-error {
+  margin-top: var(--espacio-1);
+  color: var(--color-rojo);
+  font-size: var(--tamano-texto-secundario);
+}
+
+/* DIS-25, DIS-26, DIS-31: una sola columna vertical centrada, como el wireframe.
+   Mide 960 px como máximo y la página hace scroll normal. */
+#vista-principal,
+#vista-configuracion {
+  max-width: var(--ancho-columna);
+  margin: 0 auto;
+}
+
+.pantalla-principal {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: var(--espacio-2);
+}

@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Guitar-Space</title>
+  <link rel="stylesheet" href="estilos.css">
+</head>
+<body>
+  <div id="vista-principal">
+    <!-- DIS-06: encabezado -->
+    <header class="encabezado">
+      <h1 class="titulo">Guitar-Space</h1>
+      <div class="encabezado-acciones">
+        <span id="insignia-racha" class="insignia-racha"></span>
+        <button id="boton-menu" class="boton-icono" type="button" aria-label="Configuración">⋯</button>
+      </div>
+    </header>
+
+    <main class="pantalla-principal">
+      <section class="columna">
+        <!-- DIS-07, DIS-08: resumen de la semana -->
+        <div class="tarjeta tarjeta-resumen">
+          <div id="circulo-progreso" class="circulo-progreso">
+            <svg viewBox="0 0 160 160" aria-hidden="true">
+              <circle class="anillo-fondo" cx="80" cy="80" r="70"></circle>
+              <circle id="anillo-progreso" class="anillo-progreso" cx="80" cy="80" r="70"></circle>
+            </svg>
+            <span id="porcentaje-semanal" class="porcentaje-semanal"></span>
+          </div>
+          <div class="datos-resumen">
+            <div>
+              <div class="texto-secundario">Semana</div>
+              <div id="dato-semana"></div>
+            </div>
+            <div>
+              <div class="texto-secundario">Llevas</div>
+              <div id="dato-llevas"></div>
+            </div>
+            <div>
+              <div class="texto-secundario">Semana anterior</div>
+              <div id="dato-semana-anterior"></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- DIS-09: fila de días -->
+        <div id="fila-dias" class="fila-dias"></div>
+
+        <!-- DIS-10: tarjeta Hoy -->
+        <div class="tarjeta tarjeta-hoy">
+          <div class="fila-hoy">
+            <span id="titulo-hoy"></span>
+            <span id="progreso-hoy"></span>
+          </div>
+          <div class="barra">
+            <div id="barra-hoy" class="barra-relleno"></div>
+          </div>
+          <!-- DIS-11: mensaje "Aún te faltan h:mm" (CRO-08, CRO-16) -->
+          <div id="mensaje-faltan" class="mensaje-faltan" hidden></div>
+        </div>
+      </section>
+
+      <section class="columna">
+        <!-- DIS-12, DIS-14: categorías -->
+        <div id="lista-categorias" class="lista-categorias"></div>
+        <!-- DIS-13 -->
+        <button id="boton-terminar" class="boton-terminar" type="button">Terminar práctica</button>
+      </section>
+    </main>
+  </div>
+
+  <!-- DIS-20: configuración, reemplaza a toda la pantalla principal -->
+  <div id="vista-configuracion" hidden>
+    <header class="encabezado">
+      <h1 class="titulo">Configuración</h1>
+      <button id="boton-volver" class="boton-texto" type="button">← Volver</button>
+    </header>
+
+    <main class="pantalla-configuracion columna">
+      <!-- DIS-22: meta semanal (SEM-04) -->
+      <div class="tarjeta bloque-configuracion">
+        <h2 class="subtitulo">Meta semanal</h2>
+        <div id="campo-meta"></div>
+        <div id="meta-diaria" class="texto-secundario"></div>
+        <div>
+          <button id="boton-guardar-meta" class="boton-texto" type="button">Guardar</button>
+        </div>
+      </div>
+
+      <!-- DIS-23, DIS-29, DIS-30: categorías (CAT-03, CAT-04, CAT-08 a CAT-10) -->
+      <div class="tarjeta bloque-configuracion">
+        <h2 class="subtitulo">Categorías</h2>
+        <div id="filas-categorias" class="filas-categorias"></div>
+        <div id="suma-categorias" class="texto-secundario"></div>
+        <div>
+          <button id="boton-guardar-minutos" class="boton-texto" type="button">Guardar cambios</button>
+          <div id="error-guardar"></div>
+        </div>
+        <div>
+          <button id="boton-abrir-agregar" class="boton-texto" type="button">+ Agregar categoría</button>
+        </div>
+        <div id="fila-agregar" hidden></div>
+      </div>
+    </main>
+  </div>
+
+  <script src="js/formatos.js"></script>
+  <script src="js/almacenamiento.js"></script>
+  <script src="js/semanas.js"></script>
+  <script src="js/categorias.js"></script>
+  <script src="js/registros.js"></script>
+  <script src="js/cronometro.js"></script>
+  <script src="js/progreso.js"></script>
+  <script src="js/vista-principal.js"></script>
+  <script src="js/vista-configuracion.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>
