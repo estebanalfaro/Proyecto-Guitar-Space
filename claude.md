@@ -15,7 +15,7 @@ Crear disciplina y constancia por medio de rachas, para mejorar la destreza musi
 - Responde en español claro y directo.
 
 ## Stack tecnológico
-Permitido: HTML5, CSS3 y JavaScript puro, con persistencia solo en localStorage según `contrato de datos.md`. La app se abre con doble clic en `src/index.html`.
+Permitido: HTML5, CSS3 y JavaScript puro, con persistencia solo en localStorage según `contrato de datos.md`. La app se abre con doble clic en `index.html` (en la raíz).
 
 Prohibido:
 - Frameworks, librerías externas, CDN, npm o herramientas de build.

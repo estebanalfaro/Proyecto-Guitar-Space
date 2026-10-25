@@ -5,7 +5,7 @@ Referencias: `requirements.md`, `design.md`, `contrato de datos.md`.
 
 ## Reglas de trabajo
 
-- La app se abre con doble clic en `src/index.html`, sin servidor ni instalación.
+- La app se abre con doble clic en `index.html` (en la raíz), sin servidor ni instalación. También se publica con GitHub Pages.
 - Los JS se cargan con `<script>` en el orden de la estructura (sin `import`/`export`).
 - Las tareas se hacen en orden. Una tarea se marca `[x]` solo cuando se cumple su "Hecho cuando".
 - La lógica (tareas 2 a 8) se prueba en `pruebas.html` antes de pasar a la interfaz.
@@ -17,6 +17,7 @@ guitar-space/
 ├── README.md
 ├── claude.md
 ├── REFLECTION.md
+├── index.html
 ├── docs/
 │   ├── propuesta.md
 │   ├── wireframe.png
@@ -25,7 +26,6 @@ guitar-space/
 │   ├── design.md
 │   └── tasks.md
 └── src/
-    ├── index.html
     ├── pruebas.html
     ├── estilos.css
     └── js/

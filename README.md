@@ -16,9 +16,9 @@ Proyecto final del curso **Programación Intencional con IA Generativa** (Univer
 
 ## Cómo usarla
 
-1. Descarga o clona el repositorio.
-2. Abre `src/index.html` con doble clic. No necesita servidor, instalación ni internet.
-3. Para ver las pruebas de la lógica, abre `src/pruebas.html` (122 pruebas).
+- **En línea:** https://estebanalfaro.github.io/Proyecto-Guitar-Space/
+- **En tu computadora:** descarga o clona el repositorio y abre `index.html` con doble clic. No necesita servidor, instalación ni internet.
+- **Pruebas de la lógica:** abre `src/pruebas.html` (122 pruebas).
 
 ## Tecnologías
 
@@ -30,6 +30,7 @@ HTML5, CSS3 y JavaScript puro, sin frameworks, librerías ni herramientas de bui
 ├── README.md
 ├── claude.md              Reglas de proyecto para la IA (stack, convenciones, prohibiciones)
 ├── REFLECTION.md          Autoevaluación de alineación
+├── index.html             La app
 ├── docs/
 │   ├── propuesta.md       Problema e idea de la app
 │   ├── wireframe.png      Boceto inicial de la interfaz
@@ -38,7 +39,6 @@ HTML5, CSS3 y JavaScript puro, sin frameworks, librerías ni herramientas de bui
 │   ├── design.md          Estilo, pantallas y estados visuales
 │   └── tasks.md           Orden de implementación
 └── src/
-    ├── index.html         La app
     ├── pruebas.html       Pruebas de la lógica
     ├── estilos.css
     └── js/                Lógica (formatos.js a progreso.js), vistas y app.js
